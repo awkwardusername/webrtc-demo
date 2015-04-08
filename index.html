@@ -1,0 +1,31 @@
+<html>
+  <head>
+    
+    <script src='http://static.opentok.com/v2/js/opentok.min.js'></script>
+    <script type="text/javascript">
+      // Initialize API key, session, and token...
+      // Think of a session as a room, and a token as the key to get in to the room
+      // Sessions and tokens are generated on your server and passed down to the client
+      var apiKey = "45204632";
+      var sessionId = "1_MX40NTIwNDYzMn5-MTQyODUxMTU0NDIxOX5XK29YbG5Gd0xlV24rMXA1TGN1OFpNUjN-fg";
+      var token = "T1==cGFydG5lcl9pZD00NTIwNDYzMiZzaWc9NjQyYTEzODZhMmZlMzExOTBiZWViNzQyMDE3OWVlNDY1NTNmNWFmYzpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5USXdORFl6TW41LU1UUXlPRFV4TVRVME5ESXhPWDVYSzI5WWJHNUdkMHhsVjI0ck1YQTFUR04xT0ZwTlVqTi1mZyZjcmVhdGVfdGltZT0xNDI4NTExNTk1Jm5vbmNlPTAuNjQyMzYxMTg4OTE3MDU0OA==";
+
+      // Initialize session, set up event listeners, and connect
+      var session = OT.initSession(apiKey, sessionId);
+ 
+      session.on("streamCreated", function(event) {
+        session.subscribe(event.stream);
+      });
+     
+      session.connect(token, function(error) {
+        var publisher = OT.initPublisher();
+        session.publish(publisher);
+      });
+    </script>
+  </head>
+  <body>
+    Awesome video feed!
+    
+
+  </body>
+</html>
